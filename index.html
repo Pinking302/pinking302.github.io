@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伊甸之星跃迁系统</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>第零额定功率...启动</title>
     <style>
         * {
             margin: 0;
@@ -14,175 +13,216 @@
         }
         
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             padding: 20px;
-            overflow-x: hidden;
+            color: #333;
         }
         
         .container {
-            max-width: 800px;
+            text-align: center;
+            max-width: 600px;
             width: 100%;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
         
         h1 {
-            font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #2c3e50;
+            font-weight: 600;
         }
         
         p {
-            font-size: 1.2rem;
-            line-height: 1.6;
             margin-bottom: 25px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
+            color: #555;
+            font-size: 18px;
         }
         
-        .logo {
-            font-size: 4rem;
-            margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-        
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 40px 0;
-        }
-        
-        .feature {
-            flex: 1;
-            min-width: 200px;
-            margin: 15px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #ffcc00;
-        }
-        
-        /* 弹窗样式 */
-        .overlay {
+        .modal {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
+            z-index: 100;
         }
         
-        .popup {
-            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
-            color: #333;
-            width: 90%;
-            max-width: 500px;
-            padding: 40px 30px;
-            border-radius: 20px;
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transform: scale(0.9);
-            animation: scaleIn 0.5s forwards;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            animation: modalFade 0.5s;
         }
         
-        .popup h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        
-        .popup p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #fff;
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .countdown {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin: 20px 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 48px;
+            font-weight: 700;
+            color: #3498db;
+            margin: 25px 0;
         }
         
-        .progress-bar {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            width: 100%;
-            background: #fff;
-            border-radius: 5px;
-            animation: countdown 5s linear forwards;
-            transform-origin: left;
-        }
-        
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        button {
-            padding: 12px 30px;
+        .btn {
+            padding: 14px 28px;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin: 10px;
         }
         
-        .jump-now {
-            background: #6a11cb;
+        .btn-primary {
+            background: #3498db;
             color: white;
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.4);
         }
         
-        .jump-now:hover {
-            background: #4d08a3;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.5);
         }
         
-        .cancel {
-            background: rgba(255, 255, 255, 0.3);
+        .btn-secondary {
+            background: #e74c3c;
             color: white;
+            box-shadow: 0 4px 14px rgba(231, 76, 60, 0.4);
         }
         
-        .cancel:hover {
-            background: rgba(255, 255,
+        .btn-secondary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(231, 76, 60, 0.5);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .destination {
+            font-weight: 600;
+            color: #3498db;
+            word-break: break-all;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>开始跃迁服务</h1>
+        <p>由原理工作室提供技术支持，本页面加载后将自动跳转到目标网址。</p>
+        
+        <div class="info-box">
+            <p>如果跳转被取消，您可以随时点击下方的按钮重新启动跳转进程，重装小兔竭诚为您服务。</p>
+        </div>
+        
+        <div id="jumpAgainSection" class="hidden">
+            <p>你是什么东西你以世界之名，我世界之名是我布洛妮娅...哦对不起瓦尔特...对不起对不起</p>
+            <button id="jumpAgainBtn" class="btn btn-primary">重新跳转</button>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>即将跳转</h2>
+            <p>您将在 <span id="countdown" class="countdown">5</span> 秒后跳转到</p>
+            <p class="destination">https://www.example.com</p>
+            <button id="cancelBtn" class="btn btn-secondary">取消跳转</button>
+        </div>
+    </div>
+
+    <script>
+        // 配置项
+        const TARGET_URL = 'https://www.example.com';
+        const COUNTDOWN_TIME = 5; // 倒计时秒数
+        
+        // 元素引用
+        const modal = document.getElementById('modal');
+        const countdownElement = document.getElementById('countdown');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const jumpAgainSection = document.getElementById('jumpAgainSection');
+        const jumpAgainBtn = document.getElementById('jumpAgainBtn');
+        
+        // 变量初始化
+        let countdown = COUNTDOWN_TIME;
+        let countdownInterval;
+        
+        // 开始倒计时
+        function startCountdown() {
+            // 显示弹窗
+            modal.classList.remove('hidden');
+            
+            // 重置倒计时
+            countdown = COUNTDOWN_TIME;
+            countdownElement.textContent = countdown;
+            
+            // 设置倒计时间隔
+            countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectToTarget();
+                }
+            }, 1000);
+        }
+        
+        // 跳转到目标URL
+        function redirectToTarget() {
+            window.location.href = TARGET_URL;
+        }
+        
+        // 取消跳转
+        function cancelRedirect() {
+            clearInterval(countdownInterval);
+            modal.classList.add('hidden');
+            jumpAgainSection.classList.remove('hidden');
+        }
+        
+        // 事件监听
+        cancelBtn.addEventListener('click', cancelRedirect);
+        jumpAgainBtn.addEventListener('click', startCountdown);
+        
+        // 页面加载完成后开始倒计时
+        window.addEventListener('load', startCountdown);
+    </script>
+</body>
+</html>
