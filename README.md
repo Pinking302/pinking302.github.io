@@ -1,2 +1,2 @@
 # pinking302.github.io
-个人网站
+网页跳转
